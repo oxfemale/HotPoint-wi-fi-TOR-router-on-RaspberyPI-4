@@ -1,0 +1,608 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.7  (Unix)">
+	<META NAME="AUTHOR" CONTENT="jane doe">
+	<META NAME="CREATED" CONTENT="20200517;21130200">
+	<META NAME="CHANGEDBY" CONTENT="jane doe">
+	<META NAME="CHANGED" CONTENT="20200518;2504400">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 21cm 29.7cm; margin-left: 1.19cm; margin-right: 1.99cm; margin-top: 2cm; margin-bottom: 2cm }
+		P { margin-bottom: 0.21cm }
+		H3 { margin-bottom: 0.21cm; page-break-after: avoid }
+		H3.western { font-family: "Times New Roman", serif; font-size: 14pt; font-weight: bold }
+		H3.cjk { font-family: "Arial Unicode MS"; font-size: 14pt; font-weight: bold }
+		H3.ctl { font-family: "Arial Unicode MS"; font-size: 14pt; font-weight: bold }
+		PRE { font-family: "Courier New", monospace; font-size: 10pt }
+		A:link { color: #000080; so-language: zxx; text-decoration: underline }
+		A:visited { color: #800000; so-language: zxx; text-decoration: underline }
+		CODE { font-family: "Courier New", monospace }
+		EM { font-style: italic }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="ru-RU" LINK="#000080" VLINK="#800000" DIR="LTR">
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Настройка
+wi-fi TOR роутера на базе Rpi</FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"> <FONT FACE="Times New Roman, serif"><FONT SIZE=3>Для
+начала необходимо скачать свежий образ<B>
+Raspbian for Raspberry Pi.</B></FONT></FONT></FONT></P>
+<H3 CLASS="western" ALIGN=LEFT STYLE="font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Нам
+подойдет Raspbian</SPAN><B> Buster Lite ( </B><SPAN STYLE="font-weight: normal">Minimal
+image based on Debian Buster):</SPAN></FONT></FONT></FONT></H3>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><A HREF="https://downloads.raspberrypi.org/raspbian_lite_latest.torrent"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>https://downloads.raspberrypi.org/raspbian_lite_latest.torrent</B></FONT></FONT></FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><A HREF="https://downloads.raspberrypi.org/raspbian_lite_latest">https://downloads.raspberrypi.org/raspbian_lite_latest</A><BR></B></FONT></FONT></FONT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000">
+</FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">Следующим
+этапом будет запись дистрибутива на
+flash карту. Вынимает флешку, вставляет
+ее в card-reader, любым софтом делает флешку
+загрузочной,  для этих целей идеальным
+в своей простоте подходит
+</SPAN></FONT></FONT></FONT><A HREF="https://www.balena.io/etcher/"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>https://www.balena.io/etcher/</FONT></FONT></FONT></A><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+<BR>Скачивает и ставим Balena, запускаем.<BR>После
+старта Balen надо указать на какую флешку
+будет писать, если у вас одна flash-card в
+card-reader, то не трогает и просто перетянуть
+образ прямо в zip в окно программы.<BR>Нажать
+запись, после того как образ запишется,
+balen сам безопасно извлечет карту.<BR>Карту
+можно вынимать и вставлять в Rpi.</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Подключаем
+к Rpi: клавиатуру, монитор, загружается.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Устанавливает
+систему (Система автоматом сделает
+практически все).</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Подключаем
+Rpi к интернет через ethernet разъём,
+тык.<BR>Перезагружаемся.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Входим
+в консоль:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>login:
+<B>pi</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>password:
+<B>raspberry</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Первым
+делом, необходимо обновится и
+актуализировать версии:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo
+apt-get install git<BR></B></FONT></FONT></FONT><BR>
+</P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Настраиваем
+удаленный доступ по ssh и если надо меняем
+пароль для пользователя pi:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+raspi-config</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Если
+настройки устраивают, перезагружаем
+систему:<BR><SPAN STYLE="font-style: normal"><B>sudo reboot</B></SPAN></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Входим
+в консоль:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>login:
+<B>pi</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>password:
+<B>ваш новый пароль или старый добрый</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT SIZE=5>Настраиваем
+ точку доступа.</FONT><BR>Для автоматизации
+большей части процесса, есть скрипт на
+питоне, скачиваем его и устанавливаем
+необходимые зависимости:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0cm"><CODE><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>git
+clone <A HREF="https://github.com/0x90/hotspotd/">https://github.com/0x90/hotspotd/</A><BR>cd
+hotspotd</B></SPAN></FONT></FONT></FONT></CODE></P>
+<P STYLE="margin-bottom: 0cm"><CODE><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>pip
+install -e .</B></SPAN></FONT></FONT></FONT></CODE></P>
+<PRE STYLE="text-align: left"></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0cm">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Перед
+запуском скрипта hotspotd, докидываем нужных
+пакетов:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+apt-get install tor mc joe nano monit </B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+hostapd </B></SPAN></FONT></FONT></FONT><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>dnsmasq</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><BR></SPAN></SPAN></FONT></FONT></FONT></EM><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">перед
+началом настроим:</SPAN></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">TOR
+— это понятно что и </SPAN></SPAN></FONT></FONT></FONT></EM>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">MONIT
+— это сервис которые будет проверять
+не упал ли вдруг tor и как его быстренько
+поднять, <BR></SPAN></SPAN></FONT></FONT></FONT></EM><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">настраиваем
+паршивцев:<BR></SPAN></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+nano /etc/tor/torrc</B></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">или
+</SPAN></SPAN></FONT></FONT></FONT></EM>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+mcedit /etc/tor/torrc</B></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">тут
+кому какой больше редактор удобнее, я
+в дальнейшем буду использовать </SPAN></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>mcedit</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">.</SPAN></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Добавляет
+в конец файла строки, запоминаем IP на
+котором будет трудится tor (192.168.45.1):<BR></SPAN></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>Log
+notice file /var/log/tor/notices.log <BR>VirtualAddrNetwork
+</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>10</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>.192.0.0/10
+<BR>AutomapHostsSuffixes .onion, .exit <BR>AutomapHostsOnResolve </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>1</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+<BR>TransPort </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>192</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>.168.45.1:9040
+<BR>TransListenAddress </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>192</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>.168.45.1
+<BR>DNSPort </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>192</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>.168.45.1:53
+<BR>DNSListenAddress </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>192</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>.168.45.1</B></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"> </FONT></EM>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Для
+полного фарша можно добавить еще вот
+эти строчки, для обновления вашего IP в
+тор сети каждые 10 секунд:<BR></SPAN></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>CircuitBuildTimeout
+</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>10</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+<BR>LearnCircuitBuildTimeout </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>0</B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+<BR>MaxCircuitDirtiness </B></SPAN></FONT></FONT></FONT></EM><EM><FONT COLOR="#e74c3c"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>10</B></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><EM><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">сохраняем
+изменения, выходим из редактора.</SPAN></SPAN></FONT></FONT></FONT></EM></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Теперь
+нам необходимо понять, какой адаптер
+wlan нам нужен. Стандартный встроенный
+адаптер будет называться wlan0, в нашем
+же случае мы используем внешний usb wi-fi,
+который будет именован wlan1. Если wi-fi usb
+адаптеров еще больше и ваш нужно понять
+какой из них как называет, это можно
+сделать командой (предварительно
+установив ее командой sudo apt-get install lshw):
+<FONT COLOR="#000000"><B>lshw -class network</B></FONT></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Перед
+тестовым запуском </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>tor</B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>,
+создадим для него правила в </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>iptables</B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>:<BR></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+iptables -F &amp;&amp;</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>
+</B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+iptables -t nat -F </B></SPAN></FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B><BR>sudo
+iptables -t nat -A PREROUTING -i </B></SPAN></FONT></FONT></FONT><FONT COLOR="#ff3333"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>wlan1</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+-p udp --dport </B></SPAN></FONT></FONT></FONT><FONT COLOR="#ff3333"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>53</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>
+</B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>-j
+REDIRECT --to-ports </B></SPAN></FONT></FONT></FONT><FONT COLOR="#ff3333"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>53</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>
+<BR></B></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+iptables -t nat -A PREROUTING -i </B></SPAN></FONT></FONT></FONT><FONT COLOR="#ff3333"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>wlan1</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>
+-p tcp --syn -j REDIRECT --to-ports </B></SPAN></FONT></FONT></FONT><FONT COLOR="#ff3333"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>9040</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Перед
+сохранением изменений в </SPAN></SPAN><SPAN STYLE="font-style: normal"><B>iptables</B></SPAN><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">,
+проверить правила на ошибки командой:<BR></SPAN></SPAN><SPAN STYLE="font-style: normal"><B>sudo
+iptables -t nat -L</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">если
+все ОК, то сохраняемся:</SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><BR></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+sh -c &quot;iptables-save &gt; /etc/iptables.ipv4.nat&quot;<BR></B></SPAN></FONT></FONT></FONT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Создадим
+лог файл для tor, он может пригодится в
+процессе настроек, потом его стоит
+отключить:</SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B><BR>sudo
+touch /var/log/tor/notices.log<BR>sudo chown debian-tor
+/var/log/tor/notices.log &amp;&amp; sudo chmod 644
+/var/log/tor/notices.log<BR><BR></B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Tor
+настроен и теперь надо поднять и настроить
+точку доступа для wi-fi клиентуры. Однако
+перед тем как приступить нам понадобятся
+2 скрипта, iptable2tor будет запускаться перед
+стартом и заворачивать трафик в tor, а
+второй stop2tor будет останавливать tor после
+выключения wi-fi точки доступа.</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Файлы
+будут лежать для удобства в /etc/iptable2tor и
+/etc/stop2tor:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">создаем
+файл;</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+mcedit /etc/iptable2tor</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">добавляем
+содержимое:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">#!/bin/bash</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+iptables -t nat -A PREROUTING -i wlan1 -p udp --dport 53 -j REDIRECT
+--to-ports 53</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+iptables -t nat -A PREROUTING -i wlan1 -p tcp --syn -j REDIRECT
+--to-ports 9040</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">сохраняем
+изменения и выходим из редактора,
+добавляем прав на запуск скрипта:<BR></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+chmod +x /etc/iptable2tor</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">создаем
+файл:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+mcedit /etc/stop2tor</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">добавляем
+содержимое:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">#!/bin/bash</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">сохраняем
+изменения и выходим из редактора,
+добавляем прав на запуск скрипта:<BR></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+chmod +x /etc/stop2tor</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Конфигурируем
+wi-fi точку доступа, для нашего usb wi-fi
+адаптера wlan1 в подсети 192.168.45.1 с маской
+подсети 255.255.255.0 и так прочие настройки,
+командой:<BR></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>sudo
+hotspotd configure</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><BR></SPAN></SPAN></FONT></FONT></FONT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">пример
+текущей конфигурации:<BR></SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><I><SPAN STYLE="font-weight: normal">WiFi
+interface to use for AP [wlan0]: </SPAN></I></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><I><B>wlan1</B></I></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Network
+interface connected to Internet [eth0]:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Access
+point IP address [192.168.45.1]:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Netmask
+for network [255.255.255.0]:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>WiFi
+interface MAC address [b8:27:eb:a0:36:da]:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>WiFi
+channel to use for AP [6]:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>WiFi
+access point SSID [MosMetro_Free]: </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>TorNetwork</B></FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>WiFi
+password []:</FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>killedbaby</B></FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Repeat
+for confirmation:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Hidden
+SSID [y/N]: </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>n</B></FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>execute
+something on start []: </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>/etc/iptable2tor</B></FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>execute
+something on stop []: </FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>/etc/stop2tor</B></FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>17.05.2020
+21:10:39 - INFO - Config files:</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>17.05.2020
+21:10:39 - INFO -
+	hostapd	/usr/local/lib/python2.7/dist-packages/run.conf</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>17.05.2020
+21:10:39 - INFO - 	hotspotd	/etc/hotspotd.json</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><I><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>17.05.2020
+21:10:39 - INFO - Configuration saved to /etc/hotspotd.json. Run
+&quot;hotspotd start&quot; to start the router.</FONT></FONT></FONT></I></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Сохраняем
+изменения командой:<BR></SPAN></SPAN></FONT></FONT></FONT><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+hotspotd generate</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:19:16 - INFO - Config files:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:19:16 - INFO -
+	hostapd	/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:19:16 - INFO - 	hotspotd	/etc/hotspotd.json</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:19:16 - INFO - Loading configuration from /etc/hotspotd.json</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:19:16 - INFO - created hostapd configuration:
+/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Пробуем
+стартовать сервис точку доступа + TOR с
+учетом сделанных выше  настроек (
+сохраненная копия их хранится тут
+/usr/local/lib/python2.7/dist-packages/run.conf):<BR></SPAN></SPAN></FONT></FONT></FONT><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+hotspotd start</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - Config files:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO -
+	hostapd	/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - 	hotspotd	/etc/hotspotd.json</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - Loading configuration from /etc/hotspotd.json</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - created hostapd configuration:
+/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - using interface: wlan1 on IP: 192.168.45.1 MAC:
+b8:27:eb:a0:36:da</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - CMD: ifconfig wlan1 down</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - Setting interface wlan1 MAC address to
+b8:27:eb:a0:36:da</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:46 - INFO - CMD: ifconfig wlan1 up 192.168.45.1 netmask
+255.255.255.0</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - CMD: ps aux |grep dnsmasq |grep -v grep</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - CMD: ps aux |grep hostapd |grep -v grep</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - enabling forward in sysctl.</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - CMD: sysctl -w net.ipv4.ip_forward=1</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - creating NAT using iptables: wlan1 &lt;--&gt; eth0</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:49 - INFO - CMD: iptables -P FORWARD ACCEPT</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables --table nat --delete-chain</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables --table nat -F</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables --table nat -X</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables -t nat -A POSTROUTING -o eth0 -j
+MASQUERADE</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables -A FORWARD -i eth0 -o wlan1 -j ACCEPT
+-m state --state RELATED,ESTABLISHED</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables -A FORWARD -i wlan1 -o eth0 -j ACCEPT</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables -A OUTPUT --out-interface eth0 -j
+ACCEPT</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: iptables -A INPUT --in-interface wlan1 -j
+ACCEPT</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - running dnsmasq: dnsmasq --dhcp-authoritative
+--interface=wlan1
+--dhcp-range=192.168.45.20,192.168.45.100,255.255.255.0,4h</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - CMD: dnsmasq --dhcp-authoritative --interface=wlan1
+--dhcp-range=192.168.45.20,192.168.45.100,255.255.255.0,4h</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:50 - INFO - hostapd -B
+/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:52 - INFO - CMD: hostapd -B
+/usr/local/lib/python2.7/dist-packages/run.conf</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:52 - INFO - Executing: /etc/iptable2tor</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">17.05.2020
+21:24:52 - INFO - hotspot is running.</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Все
+хорошо, теперь проверим запустился ли
+TOR сервис в нашей новой подсети:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+service tor start</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><B><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal">sudo
+service tor status</SPAN></FONT></FONT></FONT></B></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000">●
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">tor.service
+- Anonymizing overlay network for TCP (multi-instance-master)</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000">  
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Loaded:
+loaded (/lib/systemd/system/tor.service; enabled; vendor preset:
+enabled)</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000">  
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Active:
+active (exited) since Sun 2020-05-17 21:25:05 BST; 6s ago</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"> 
+<FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Process:
+3455 ExecStart=/bin/true (code=exited, status=0/SUCCESS)</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"> <FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Main
+PID: 3455 (code=exited, status=0/SUCCESS)</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">May
+17 21:25:05 raspberrypi systemd[1]: Starting Anonymizing overlay
+network for TCP (multi-instance-master)...</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">May
+17 21:25:05 raspberrypi systemd[1]: Started Anonymizing overlay
+network for TCP (multi-instance-master).</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Все
+запустилось, теперь самое время добавить
+</SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>TOR</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+и  </SPAN></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><B>hotspotd</B></SPAN></FONT></FONT></FONT><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+в автозагрузки при старте системы.</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Добавляет
+tor:<BR></SPAN></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>sudo
+update-rc.d tor enable</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Для
+добавления  </SPAN></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>hotspotd</B></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+в окружение загрузчика сервисов </SPAN></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>systemd</B></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">создаем
+новый файл<BR></SPAN></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>sudo
+mcedit /etc/systemd/system/hotspotd.service</B></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal"><BR></SPAN></SPAN></FONT></FONT></FONT><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">заполняем
+его:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">[Unit]</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">Description=Tor
+wi-fi routing</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">After=network.target</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">[Service]</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">Type=oneshot</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">RemainAfterExit=yes</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">User=root</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">WorkingDirectory=/usr/local/lib/python2.7/dist-packages/</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">ExecStart=/usr/local/bin/hotspotd
+start</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">ExecStop=/usr/local/bin/hotspotd
+stop</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#Restart=on-failure</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+Other restart options: always, on-abort, etc</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+The install section is needed to use</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+`systemctl enable` to start on boot</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+For a user service that you want to enable</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+and start automatically, use `default.target`</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">#
+For system level services, use `multi-user.target`</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">[Install]</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">WantedBy=multi-user.target</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Сохраняем
+изменения в файле, выходим из редактора,
+добавляем файлу прав на запуск:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>sudo
+chmod +x /etc/systemd/system/hotspotd.service</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">Добавляем
+сервис hotspotd.service в автозагрузку, и
+проверяем успешный запуск, предварительно
+надо выключить уже работающую копию
+ручного запуска:</SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">sudo
+hotspotd stop<BR>sudo systemctl enable hotspotd</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">sudo
+systemctl start hotspotd</SPAN></FONT></B></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">Теперь
+можно настроить сервис </SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>monit</B></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">,
+который будет следить за доступностью
+и работоспособностью сервиса </SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>TOR</B></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal">
+в нашем случае, создаем для него файл
+настроек:<BR></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>sudo
+mcedit /etc/monit/monitrc</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-weight: normal"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Добавляет
+содержимое:<BR></SPAN></SPAN></FONT><FONT COLOR="#000000"><SPAN STYLE="font-style: normal"><B>check
+process gdm with pidfile /var/run/tor/tor.pid <BR>start program =
+&quot;/etc/init.d/tor start&quot; <BR>stop program = &quot;/etc/init.d/tor
+stop&quot;</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Стартуем
+monit и добавляем его в автозагрузку:<BR></SPAN></SPAN><SPAN STYLE="font-style: normal"><B>sudo
+systemctl restart monit <BR>sudo systemctl enable monit</B></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">Перезагружаем
+малину и проверяем что стартанули
+сервисы hostapd, tor, monit:</SPAN></SPAN></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+reboot</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+ps uxa|grep hostapd</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+ps uxa|grep tor</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+ps uxa|grep  monit</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>При
+возникновении проблем или ошибок,
+смотрим логи:<BR><B>cd /var/logs/</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"> </FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>или
+</FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal"><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><B>sudo
+journalctl -u hotspotd</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Если
+сервисы работают и все хорошо, пробует
+подключиться к точке.<BR>имя: <B>TorNetwork</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>пароль:
+<B>killedbaby</B></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>Если
+успешно подключились к точке доступа
+и есть интернет, то проверяет работе
+<B>TOR</B>  смотрит свой текущий IP адрес и
+страну:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#36464e"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><A HREF="https://www.iplocation.net/"><FONT COLOR="#000000"><B>https://www.iplocation.net/</B></FONT></A></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3>BONUS:<BR>.onion
+hidden services works with iptables rules:</FONT></FONT></FONT></P>
+<PRE STYLE="background: #f6f8fa; border: none; padding: 0cm; line-height: 145%; widows: 2; orphans: 2"><CODE><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-A PREROUTING -i wlan0 -p udp -m udp --dport 53 -j REDIRECT --to-ports 53</SPAN></SPAN></FONT></FONT></FONT></CODE>
+<CODE><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-A PREROUTING -i wlan0 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j REDIRECT --to-ports 9040</SPAN></SPAN></FONT></FONT></FONT></CODE>
+<CODE><FONT COLOR="#000000"><FONT FACE="Times New Roman, serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-A PREROUTING -i wlan0 -p tcp -d 10.192.0.0/10 -j REDIRECT --to-port 9040</SPAN></SPAN></FONT></FONT></FONT></CODE></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0cm; font-style: normal; font-weight: normal">
+<BR>
+</P>
+</BODY>
+</HTML>
